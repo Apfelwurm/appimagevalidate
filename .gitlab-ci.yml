@@ -1,0 +1,17 @@
+stages:
+  - build
+
+variables:
+  DOCKER_DRIVER: overlay2
+  CONTAINER_IMAGE: $CI_PROJECT_PATH
+
+build_image:
+  stage: build
+  image: docker:git
+  services:
+    - docker:18-dind
+  script:
+    - docker login -u $CI_BUILD_USER -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker pull registry.gitlab.com/apfelwurm/appimagevalidate:latest || true
+    - docker build --cache-from registry.gitlab.com/apfelwurm/appimagevalidate:latest -t registry.gitlab.com/apfelwurm/appimagevalidate:latest .
+    - docker push registry.gitlab.com/apfelwurm/appimagevalidate:latest
