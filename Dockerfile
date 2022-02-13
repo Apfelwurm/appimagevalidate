@@ -5,7 +5,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y nano gnupg2 git p
 
 COPY validateappimage.sh /
 RUN chmod +x /validateappimage.sh
-RUN git clone --recursive https://github.com/yobson/AppImageKit --depth=1 /tmp/AppImageKit
+RUN git clone --recursive https://github.com/AppImage/AppImageKit --depth=1 /tmp/AppImageKit
 WORKDIR /tmp/AppImageKit
 RUN cmake . -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release
 RUN make -j`nproc`
