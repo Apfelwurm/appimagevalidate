@@ -1,8 +1,6 @@
 # appimagevalidate
 This docker container validates an appimage signature via the validate tool of [appimagekit](https://github.com/AppImage/AppImageKit)
 
-Info: currently the validate tool is built based on the fork of https://github.com/yobson/AppImageKit because of https://github.com/AppImage/AppImageKit/pull/1090 
-
 ## Installation Prerequisites
 
 ### Prerequisites
